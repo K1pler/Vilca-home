@@ -4,7 +4,7 @@ function App() {
   const [message, setMessage] = useState("Cargando...");
 
   useEffect(() => {
-    fetch("https://tu-dominio.onrender.com/")
+    fetch("https://Vilca-home.onrender.com/")
       .then((res) => res.text())
       .then((data) => setMessage(data))
       .catch(() => setMessage("Error al conectar con el backend"));
