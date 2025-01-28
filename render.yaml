@@ -1,0 +1,11 @@
+services:
+  - name: web-service
+    type: web
+    runtime: node
+    buildCommand: |
+      cd backend && npm install && cd ../frontend && npm install && npm run build
+    startCommand: |
+      cd backend && npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.2
