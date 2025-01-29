@@ -1,16 +1,31 @@
 import { useEffect, useState } from "react";
+import Home from "./pages/Home";
 
 function App() {
-  const [message, setMessage] = useState("Cargando...");
+  const [departamentos, setDepartamentos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://Vilca-home.onrender.com/")
-      .then((res) => res.text())
-      .then((data) => setMessage(data))
-      .catch(() => setMessage("Error al conectar con el backend"));
+    fetch("https://vilca-home.onrender.com/api/departamentos")
+      .then((res) => {
+        if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
+        return res.json();
+      })
+      .then((data) => {
+        setDepartamentos(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
 
-  return <h1>{message}</h1>;
+  if (loading) return <h1>Cargando departamentos...</h1>;
+  if (error) return <h1>Error: {error}</h1>;
+
+  return <Home departamentos={departamentos} />;
 }
 
 export default App;
