@@ -1,6 +1,6 @@
-import { Header } from "../Header";
-import { DepartamentoCard } from "../DepartamentoCard";
-import { Footer } from "../Footer";
+import { Header } from "../components/Header";
+import { DepartamentoCard } from "../components/DepartamentoCard";
+import { Footer } from "../components/Footer";
 
 export default function Home() {
   return (
