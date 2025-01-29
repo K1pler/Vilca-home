@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 // Configurar rutas absolutas para servir archivos estáticos
 const __filename = fileURLToPath(import.meta.url);
