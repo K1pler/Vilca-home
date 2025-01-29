@@ -1,4 +1,5 @@
-import express from "express";
+
+import express from "express"; //Crea servidor http
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
@@ -8,13 +9,13 @@ dotenv.config();
 
 const PORT = process.env.PORT || 10000;  // ✅ Definir antes de usar
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://vilca-home.onrender.com" }));
 
 console.log("Servidor en ejecución en el puerto:", PORT); // ✅ Ahora sí podemos imprimir PORT
 
 // Configurar rutas absolutas para servir archivos estáticos
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url); //Obtiene la ruta absoluta de server.js
+const __dirname = path.dirname(__filename); //Obtiene el directorio de server.js
 
 // 📌 ✅ Definir primero las rutas de API antes de servir archivos estáticos
 app.get("/api/departamentos", (req, res) => {
