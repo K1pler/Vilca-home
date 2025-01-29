@@ -18,15 +18,14 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist", "index.html"));
 });
 
-// Endpoint para obtener los departamentos
+console.log("Servidor en ejecución en el puerto:", PORT);
 app.get("/api/departamentos", (req, res) => {
-  const departamentos = [
+  console.log("Petición recibida en /api/departamentos");
+  res.json([
     { titulo: "Estudio", descripcion: "Perfecto para solteros o parejas" },
     { titulo: "Un dormitorio", descripcion: "Ideal para parejas o pequeñas familias" },
     { titulo: "Dos dormitorios", descripcion: "Espacioso para familias" }
-  ];
-  console.log("Enviando departamentos:", departamentos);
-  res.json(departamentos);
+  ]);
 });
 
 const PORT = process.env.PORT || 10000;
