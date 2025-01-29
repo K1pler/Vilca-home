@@ -5,8 +5,12 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
+
+const PORT = process.env.PORT || 10000;  // ✅ Definir antes de usar
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors());
+
+console.log("Servidor en ejecución en el puerto:", PORT); // ✅ Ahora sí podemos imprimir PORT
 
 // Configurar rutas absolutas para servir archivos estáticos
 const __filename = fileURLToPath(import.meta.url);
@@ -18,7 +22,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../../frontend/dist", "index.html"));
 });
 
-console.log("Servidor en ejecución en el puerto:", PORT);
+// Endpoint para obtener los departamentos
 app.get("/api/departamentos", (req, res) => {
   console.log("Petición recibida en /api/departamentos");
   res.json([
@@ -28,5 +32,4 @@ app.get("/api/departamentos", (req, res) => {
   ]);
 });
 
-const PORT = process.env.PORT || 10000;
 app.listen(PORT, "0.0.0.0", () => console.log(`Servidor en http://localhost:${PORT}`));
