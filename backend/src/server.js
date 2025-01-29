@@ -28,4 +28,4 @@ app.get("/api/departamentos", (req, res) => {
   res.json(departamentos);
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
