@@ -25,6 +25,7 @@ app.get("/api/departamentos", (req, res) => {
     { titulo: "Un dormitorio", descripcion: "Ideal para parejas o pequeñas familias" },
     { titulo: "Dos dormitorios", descripcion: "Espacioso para familias" }
   ];
+  console.log("Enviando departamentos:", departamentos);
   res.json(departamentos);
 });
 

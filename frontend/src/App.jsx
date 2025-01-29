@@ -13,14 +13,17 @@ function App() {
         return res.json();
       })
       .then((data) => {
+        if (!Array.isArray(data)) throw new Error("Datos inválidos recibidos");
         setDepartamentos(data);
         setLoading(false);
       })
       .catch((err) => {
         setError(err.message);
+        setDepartamentos([]); // Prevenir que sea undefined
         setLoading(false);
       });
   }, []);
+  
 
   if (loading) return <h1>Cargando departamentos...</h1>;
   if (error) return <h1>Error: {error}</h1>;
